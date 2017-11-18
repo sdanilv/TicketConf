@@ -22,20 +22,32 @@
           <element id="library" level="project" name="Maven: org.springframework:spring-tx:4.3.2.RELEASE" />
           <element id="library" level="project" name="Maven: javax.servlet:javax.servlet-api:3.1.0" />
           <element id="library" level="project" name="Maven: javax.servlet:jstl:1.2" />
+          <element id="library" level="project" name="Maven: com.google.cloud.sql:mysql-socket-factory:1.0.4" />
+          <element id="library" level="project" name="Maven: com.google.cloud.sql:jdbc-socket-factory-core:1.0.4" />
+          <element id="library" level="project" name="Maven: com.google.apis:google-api-services-sqladmin:v1beta4-rev25-1.22.0" />
+          <element id="library" level="project" name="Maven: com.google.api-client:google-api-client:1.22.0" />
+          <element id="library" level="project" name="Maven: com.google.oauth-client:google-oauth-client:1.22.0" />
+          <element id="library" level="project" name="Maven: com.google.http-client:google-http-client:1.22.0" />
+          <element id="library" level="project" name="Maven: org.apache.httpcomponents:httpclient:4.0.1" />
+          <element id="library" level="project" name="Maven: org.apache.httpcomponents:httpcore:4.0.1" />
+          <element id="library" level="project" name="Maven: commons-codec:commons-codec:1.3" />
+          <element id="library" level="project" name="Maven: com.google.code.findbugs:jsr305:1.3.9" />
+          <element id="library" level="project" name="Maven: com.google.http-client:google-http-client-jackson2:1.22.0" />
+          <element id="library" level="project" name="Maven: com.fasterxml.jackson.core:jackson-core:2.1.3" />
+          <element id="library" level="project" name="Maven: com.google.guava:guava-jdk5:17.0" />
           <element id="library" level="project" name="Maven: mysql:mysql-connector-java:5.1.42" />
           <element id="library" level="project" name="Maven: org.hibernate:hibernate-entitymanager:5.2.12.Final" />
           <element id="library" level="project" name="Maven: org.jboss.logging:jboss-logging:3.3.0.Final" />
           <element id="library" level="project" name="Maven: org.hibernate:hibernate-core:5.2.12.Final" />
-          <element id="library" level="project" name="Maven: org.hibernate.javax.persistence:hibernate-jpa-2.1-api:1.0.0.Final" />
-          <element id="library" level="project" name="Maven: org.javassist:javassist:3.20.0-GA" />
           <element id="library" level="project" name="Maven: antlr:antlr:2.7.7" />
-          <element id="library" level="project" name="Maven: org.jboss.spec.javax.transaction:jboss-transaction-api_1.2_spec:1.0.1.Final" />
           <element id="library" level="project" name="Maven: org.jboss:jandex:2.0.3.Final" />
           <element id="library" level="project" name="Maven: com.fasterxml:classmate:1.3.0" />
           <element id="library" level="project" name="Maven: dom4j:dom4j:1.6.1" />
-          <element id="library" level="project" name="Maven: xml-apis:xml-apis:1.0.b2" />
           <element id="library" level="project" name="Maven: org.hibernate.common:hibernate-commons-annotations:5.0.1.Final" />
+          <element id="library" level="project" name="Maven: org.hibernate.javax.persistence:hibernate-jpa-2.1-api:1.0.0.Final" />
+          <element id="library" level="project" name="Maven: org.javassist:javassist:3.20.0-GA" />
           <element id="library" level="project" name="Maven: net.bytebuddy:byte-buddy:1.6.14" />
+          <element id="library" level="project" name="Maven: org.jboss.spec.javax.transaction:jboss-transaction-api_1.2_spec:1.0.1.Final" />
           <element id="library" level="project" name="Maven: junit:junit:4.12" />
           <element id="library" level="project" name="Maven: org.hamcrest:hamcrest-core:1.3" />
         </element>
@@ -44,7 +56,6 @@
         <element id="file-copy" path="$PROJECT_DIR$/target/TicketConf-1.0-SNAPSHOT/META-INF/MANIFEST.MF" />
       </element>
       <element id="javaee-facet-resources" facet="TicketConf/web/Web" />
-      <element id="dir-copy" path="$PROJECT_DIR$/src/resources" />
     </root>
   </artifact>
 </component>

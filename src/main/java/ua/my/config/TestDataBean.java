@@ -12,7 +12,7 @@ import javax.annotation.PostConstruct;
 @Component
 public class TestDataBean {
 
-    @Autowired
+    @Autowired()
     private ConferenceService conferenceService;
 
     @PostConstruct

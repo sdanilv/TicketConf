@@ -19,6 +19,7 @@ import org.springframework.web.servlet.view.JstlView;
 import org.springframework.web.servlet.view.UrlBasedViewResolver;
 import ua.my.services.ConferenceService;
 import ua.my.services.ConferenceServiceImpl;
+import ua.my.services.MapConferenceImpl;
 
 import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
@@ -63,7 +64,16 @@ public class AppConfig extends WebMvcConfigurerAdapter {
         return adapter;
     }
 
-    @Bean
+//    @Bean
+//    public DataSource dataSource() {
+//        DriverManagerDataSource ds = new DriverManagerDataSource();
+//        ds.setDriverClassName("com.mysql.jdbc.Driver");
+//        ds.setUrl("jdbc:google:mysql://animated-rhythm-186006:us-central1:ticketconf/ConferenceTicketSale?user=root&amp;password=root");
+////        ds.setUsername("root");
+////        ds.setPassword("root");
+//        return ds;
+//    }
+ @Bean
     public DataSource dataSource() {
         DriverManagerDataSource ds = new DriverManagerDataSource();
         ds.setDriverClassName("com.mysql.jdbc.Driver");
@@ -91,7 +101,7 @@ public class AppConfig extends WebMvcConfigurerAdapter {
 
     @Bean
     public ConferenceService conferenceService(){
-        return new ConferenceServiceImpl();
+        return new MapConferenceImpl();
     }
 
     @Override
