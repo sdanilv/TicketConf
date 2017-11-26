@@ -11,7 +11,7 @@ import ua.my.model.Group;
 import java.util.List;
 
 
-@Service
+//@Service
 public class ConferenceServiceImpl implements ConferenceService {
     @Autowired
     private ConferenceDAO conferenceDAO;
