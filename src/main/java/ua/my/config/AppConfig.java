@@ -82,7 +82,7 @@ public class AppConfig extends WebMvcConfigurerAdapter {
     @Bean
     public DataSource dataSource()throws URISyntaxException {
         DriverManagerDataSource ds = new DriverManagerDataSource();
-        URI dbUri = new URI("mysql://bafb1dae591344:a8398252@us-cdbr-iron-east-05.cleardb.net/heroku_3a360bf682fe2fe?reconnect=true");
+        URI dbUri = new URI("mysql://bafb1dae591344:a8398252@us-cdbr-iron-east-05.cleardb.net/heroku_3a360bf682fe2fe?reconnect=true&characterEncoding=UTF-8");
 
     String username = dbUri.getUserInfo().split(":")[0];
     String password = dbUri.getUserInfo().split(":")[1];
