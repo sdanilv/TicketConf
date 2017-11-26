@@ -1,10 +1,10 @@
 package ua.my.config;
 
-import org.springframework.context.MessageSource;
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.support.ReloadableResourceBundleMessageSource;
+import org.springframework.context.annotation.ImportResource;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.JpaVendorAdapter;
@@ -17,9 +17,6 @@ import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.view.JstlView;
 import org.springframework.web.servlet.view.UrlBasedViewResolver;
-import ua.my.services.ConferenceService;
-import ua.my.services.ConferenceServiceImpl;
-import ua.my.services.MapConferenceImpl;
 
 import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
@@ -29,6 +26,7 @@ import java.util.Properties;
 @ComponentScan("ua.my")
 @EnableTransactionManagement
 @EnableWebMvc
+//@ImportResource("config.xml")
 public class AppConfig extends WebMvcConfigurerAdapter {
     @Bean
     public PlatformTransactionManager transactionManager(EntityManagerFactory emf) {
@@ -51,6 +49,7 @@ public class AppConfig extends WebMvcConfigurerAdapter {
         entityManagerFactory.setJpaProperties(jpaProp);
         entityManagerFactory.setPackagesToScan("ua.my");
 
+
         return entityManagerFactory;
     }
 
@@ -64,15 +63,8 @@ public class AppConfig extends WebMvcConfigurerAdapter {
         return adapter;
     }
 
-//    @Bean
-//    public DataSource dataSource() {
-//        DriverManagerDataSource ds = new DriverManagerDataSource();
-//        ds.setDriverClassName("com.mysql.jdbc.Driver");
-//        ds.setUrl("jdbc:google:mysql://animated-rhythm-186006:us-central1:ticketconf/ConferenceTicketSale?user=root&amp;password=root");
-////        ds.setUsername("root");
-////        ds.setPassword("root");
-//        return ds;
-//    }
+
+
  @Bean
     public DataSource dataSource() {
         DriverManagerDataSource ds = new DriverManagerDataSource();
@@ -80,8 +72,6 @@ public class AppConfig extends WebMvcConfigurerAdapter {
         ds.setUrl("jdbc:mysql://localhost:3306/ConferenceTicketSale?verifyServerCertificate=false&useSSL=true&characterEncoding=UTF-8");
         ds.setUsername("root");
         ds.setPassword("root");
-
-
         return ds;
     }
 
@@ -94,14 +84,7 @@ public class AppConfig extends WebMvcConfigurerAdapter {
         resolver.setSuffix(".jsp");
         resolver.setViewClass(JstlView.class);
         resolver.setOrder(1);
-
-
         return resolver;
-    }
-
-    @Bean
-    public ConferenceService conferenceService(){
-        return new MapConferenceImpl();
     }
 
     @Override

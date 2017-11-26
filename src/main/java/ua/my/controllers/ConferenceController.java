@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import ua.my.model.Conference;
 import ua.my.model.Group;
 import ua.my.services.ConferenceService;
+import ua.my.services.MapConferenceImpl;
 
 import static ua.my.controllers.GroupController.DEFAULT_GROUP_ID;
 

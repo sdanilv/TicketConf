@@ -6,7 +6,7 @@ import ua.my.model.Group;
 
 import java.util.*;
 
-@Component
+//@Component
 public class MapConferenceImpl implements ConferenceService {
     private final Map<Long , Conference> conferences =  new HashMap<>();
     private final ArrayList <Group>  groups = new ArrayList<>();
@@ -14,7 +14,7 @@ public class MapConferenceImpl implements ConferenceService {
 
     @Override
     public void addConference(Conference conference) {
-        conference.setId(id++);
+        conference.setId(++id);
         conferences.put(conference.getId(), conference);
     }
 
