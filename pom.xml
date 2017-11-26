@@ -10,6 +10,7 @@
     <packaging>war</packaging>
 
     <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <spring>4.3.2.RELEASE</spring>
     </properties>
 
@@ -138,7 +139,7 @@
                     <artifactId>maven-war-plugin</artifactId>
                     <version>3.0.0</version>
                     <configuration>
-                        <!--<resourceEncoding>UTF-8</resourceEncoding>-->
+                        <resourceEncoding>UTF-8</resourceEncoding>
                         <failOnMissingWebXml>false</failOnMissingWebXml>
                     </configuration>
                 </plugin>
