@@ -1,6 +1,7 @@
 package ua.my.config;
 
 
+import org.apache.commons.dbcp.BasicDataSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -20,20 +21,22 @@ import org.springframework.web.servlet.view.UrlBasedViewResolver;
 
 import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.Properties;
 
 @Configuration
 @ComponentScan("ua.my")
 @EnableTransactionManagement
 @EnableWebMvc
-//@ImportResource("config.xml")
+
 public class AppConfig extends WebMvcConfigurerAdapter {
     @Bean
     public PlatformTransactionManager transactionManager(EntityManagerFactory emf) {
         return new JpaTransactionManager(emf);
     }
 
-//    @Bean
+    @Bean
     public LocalContainerEntityManagerFactoryBean entityManagerFactory
             (DataSource dataSource, JpaVendorAdapter jpaVendorAdapter) {
         Properties jpaProp = new Properties();
@@ -53,7 +56,7 @@ public class AppConfig extends WebMvcConfigurerAdapter {
         return entityManagerFactory;
     }
 
-//    @Bean
+    @Bean
     public JpaVendorAdapter jpaVendorAdapter() {
         HibernateJpaVendorAdapter adapter = new HibernateJpaVendorAdapter();
         adapter.setShowSql(true);
@@ -66,15 +69,30 @@ public class AppConfig extends WebMvcConfigurerAdapter {
 
 
 // @Bean
-    public DataSource dataSource() {
-        DriverManagerDataSource ds = new DriverManagerDataSource();
-        ds.setDriverClassName("com.mysql.jdbc.Driver");
-        ds.setUrl("jdbc:mysql://localhost:3306/ConferenceTicketSale?verifyServerCertificate=false&useSSL=true&characterEncoding=UTF-8");
-        ds.setUsername("root");
-        ds.setPassword("root");
-        return ds;
-    }
+//    public DataSource dataSource() {
+//        DriverManagerDataSource ds = new DriverManagerDataSource();
+//        ds.setDriverClassName("com.mysql.jdbc.Driver");
+//        ds.setUrl("jdbc:mysql://localhost:3306/ConferenceTicketSale?verifyServerCertificate=false&useSSL=true&characterEncoding=UTF-8");
+//        ds.setUsername("root");
+//        ds.setPassword("root");
+//        return ds;
+//    }
 
+@Bean
+public BasicDataSource dataSource() throws URISyntaxException {
+    URI dbUri = new URI(System.getenv("mysql://bafb1dae591344:a8398252@us-cdbr-iron-east-05.cleardb.net/heroku_3a360bf682fe2fe?reconnect=true"));
+
+    String username = dbUri.getUserInfo().split(":")[0];
+    String password = dbUri.getUserInfo().split(":")[1];
+    String dbUrl = "jdbc:mysql://" + dbUri.getHost() + dbUri.getPath();
+
+    BasicDataSource basicDataSource = new BasicDataSource();
+    basicDataSource.setUrl(dbUrl);
+    basicDataSource.setUsername(username);
+    basicDataSource.setPassword(password);
+
+    return basicDataSource;
+}
 
     @Bean
     public UrlBasedViewResolver setupViewResolver() {

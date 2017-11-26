@@ -6,7 +6,7 @@ import ua.my.model.Group;
 
 import java.util.*;
 
-@Component
+//@Component
 public class MapConferenceImpl implements ConferenceService {
     private final Map<Long , Conference> conferences =  new HashMap<>();
     private final ArrayList <Group>  groups = new ArrayList<>();
