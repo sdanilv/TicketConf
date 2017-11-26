@@ -1,11 +1,11 @@
 package ua.my.config;
 
 
-import org.apache.commons.dbcp.BasicDataSource;
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.ImportResource;
+
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.JpaVendorAdapter;
@@ -30,12 +30,13 @@ import java.util.Properties;
 @EnableTransactionManagement
 @EnableWebMvc
 
+
 public class AppConfig extends WebMvcConfigurerAdapter {
     @Bean
     public PlatformTransactionManager transactionManager(EntityManagerFactory emf) {
         return new JpaTransactionManager(emf);
     }
-
+//
     @Bean
     public LocalContainerEntityManagerFactoryBean entityManagerFactory
             (DataSource dataSource, JpaVendorAdapter jpaVendorAdapter) {
@@ -78,21 +79,36 @@ public class AppConfig extends WebMvcConfigurerAdapter {
 //        return ds;
 //    }
 
-@Bean
-public BasicDataSource dataSource() throws URISyntaxException {
-    URI dbUri = new URI(System.getenv("mysql://bafb1dae591344:a8398252@us-cdbr-iron-east-05.cleardb.net/heroku_3a360bf682fe2fe?reconnect=true"));
+    @Bean
+    public DataSource dataSource()throws URISyntaxException {
+        DriverManagerDataSource ds = new DriverManagerDataSource();
+        URI dbUri = new URI("mysql://bafb1dae591344:a8398252@us-cdbr-iron-east-05.cleardb.net/heroku_3a360bf682fe2fe?reconnect=true");
 
     String username = dbUri.getUserInfo().split(":")[0];
     String password = dbUri.getUserInfo().split(":")[1];
     String dbUrl = "jdbc:mysql://" + dbUri.getHost() + dbUri.getPath();
+        ds.setDriverClassName("com.mysql.jdbc.Driver");
+        ds.setUrl(dbUrl);
+    ds.setUsername(username);
+    ds.setPassword(password);
+        return ds;
+    }
 
-    BasicDataSource basicDataSource = new BasicDataSource();
-    basicDataSource.setUrl(dbUrl);
-    basicDataSource.setUsername(username);
-    basicDataSource.setPassword(password);
-
-    return basicDataSource;
-}
+//@Bean
+//public BasicDataSource dataSource() throws URISyntaxException {
+//    URI dbUri = new URI("mysql://bafb1dae591344:a8398252@us-cdbr-iron-east-05.cleardb.net/heroku_3a360bf682fe2fe?reconnect=true");
+//
+//    String username = dbUri.getUserInfo().split(":")[0];
+//    String password = dbUri.getUserInfo().split(":")[1];
+//    String dbUrl = "jdbc:mysql://" + dbUri.getHost() + dbUri.getPath();
+//
+//    BasicDataSource basicDataSource = new BasicDataSource();
+//    basicDataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
+//    basicDataSource.setUrl(dbUrl);
+//    basicDataSource.setUsername(username);
+//    basicDataSource.setPassword(password);
+//    return basicDataSource;
+//}
 
     @Bean
     public UrlBasedViewResolver setupViewResolver() {
