@@ -1,5 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=Cp1251" pageEncoding="Cp1251"%>
+<%@ page isELIgnored="false" %>
+
 <html>
     <head>
         <meta charset="UTF-8">
