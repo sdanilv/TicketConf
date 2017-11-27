@@ -184,7 +184,6 @@
           <element id="library" level="project" name="Maven: org.eclipse.jetty.websocket:websocket-client:9.3.6.v20151106" />
           <element id="library" level="project" name="Maven: org.eclipse.jetty.websocket:websocket-servlet:9.3.6.v20151106" />
           <element id="library" level="project" name="Maven: org.eclipse.jetty.websocket:websocket-api:9.3.6.v20151106" />
-          <element id="library" level="application" name="bootstrap" />
         </element>
       </element>
       <element id="directory" name="META-INF">
