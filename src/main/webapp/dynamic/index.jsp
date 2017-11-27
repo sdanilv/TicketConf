@@ -1,6 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-
+<%@ page isELIgnored="false" %>
 
 <html>
 <head>
@@ -70,13 +70,13 @@
         </c:forEach>
 
     </div>
-    <nav aria-label="Page navigation">
-        <ul class="pagination">
-            <c:forEach var="i" begin="1" end="${pages}">
-                <li><a href="/?page=<c:out value="${i - 1}"/>"><c:out value="${i}"/></a></li>
-            </c:forEach>
-        </ul>
-    </nav>
+    <%--<nav aria-label="Page navigation">--%>
+        <%--<ul class="pagination">--%>
+            <%--<c:forEach var="i" begin="1" end="${pages}">--%>
+                <%--<li><a href="/?page=<c:out value="${i - 1}"/>"><c:out value="${i}"/></a></li>--%>
+            <%--</c:forEach>--%>
+        <%--</ul>--%>
+    <%--</nav>--%>
 </div>
 
 <script>
