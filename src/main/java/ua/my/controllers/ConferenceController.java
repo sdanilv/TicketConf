@@ -2,6 +2,7 @@ package ua.my.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -68,7 +69,7 @@ public class ConferenceController {
         return "redirect:/";
     }
 
-    @RequestMapping(value = "/conference/add", method = RequestMethod.POST)
+    @RequestMapping(value = "/conference/add", method = RequestMethod.POST, consumes = {MediaType.MULTIPART_FORM_DATA_VALUE})
     public String contactAdd(
             @RequestParam(value = "group") long groupId,
             @RequestParam String name,
