@@ -8,10 +8,16 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
+import ua.my.logic.Logic;
 import ua.my.model.Conference;
 import ua.my.model.Group;
 import ua.my.services.ConferenceService;
 import ua.my.services.MapConferenceImpl;
+
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
+import java.io.*;
 
 import static ua.my.controllers.GroupController.DEFAULT_GROUP_ID;
 
@@ -45,10 +51,10 @@ public class ConferenceController {
         return "Conference";
     }
 
-    @RequestMapping("/contact_add_page")
+    @RequestMapping("/add_conf")
     public String contactAddPage(Model model) {
         model.addAttribute("groups", conferenceService.listGroups());
-        return "contact_add_page";
+        return "Conference_add_page";
     }
 
     @RequestMapping(value = "/search", method = RequestMethod.POST)
@@ -66,17 +72,19 @@ public class ConferenceController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    @RequestMapping(value="/conference/add", method = RequestMethod.POST)
-    public String contactAdd(@RequestParam(value = "group") long groupId,
-                             @RequestParam String name,
-                             @RequestParam String description,
-                             @RequestParam int price,
-                             @RequestParam String date,
-                             @RequestParam String image,
-                             @RequestParam String email) {
+    @RequestMapping(value = "/conference/add", method = RequestMethod.POST)
+    public String contactAdd(
+            @RequestParam(value = "group") long groupId,
+            @RequestParam String name,
+            @RequestParam String description,
+            @RequestParam int price,
+            @RequestParam String date,
+            @RequestParam String email,
+            @RequestParam MultipartFile photo) {
         Group group = (groupId != DEFAULT_GROUP_ID) ? conferenceService.findGroup(groupId) : null;
+        String photoName = Logic.savePhoto(photo);
 
-        Conference conference = new Conference(group, name, price, date, image, email, description);
+        Conference conference = new Conference(group, name, price, date, photoName, email, description);
         conferenceService.addConference(conference);
 
         return "redirect:/";

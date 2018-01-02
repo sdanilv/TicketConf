@@ -5,7 +5,7 @@
 <html>
 <head>
     <title>${conference.name}</title>
-    <link rel = stylesheet href=/static/AdaptivBlock.css >
+    <link rel = stylesheet href=${pageContext.request.contextPath}/static/stylesheet/AdaptivBlock.css >
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
 </head>
@@ -27,7 +27,7 @@
                     <button type="button" id="add_group" class="btn btn-default navbar-btn">Найти мероприятия</button>
                 </li>
                 <li>
-                    <button type="button" id="delete_contact" class="btn btn-default navbar-btn">Создать мероприятие
+                    <button type="button" id="add_conf" class="btn btn-default navbar-btn">Создать мероприятие
                     </button>
                 </li>
                 <%--<li class="dropdown">--%>
@@ -53,7 +53,7 @@
 
 <div class="wrapper">
 
-    <img src="${conference.image}" >
+    <img src="${pageContext.request.contextPath}/static/${conference.image}" >
     <div class="panel panel-default">
         <div class="panel-body">
             <h1>Описание:</h1>

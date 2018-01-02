@@ -5,7 +5,7 @@
 <html>
 <head>
     <title>TicketConf</title>
-    <link rel = stylesheet href=/static/AdaptivBlock.css >
+    <link rel = stylesheet href=${pageContext.request.contextPath}/static/stylesheet/AdaptivBlock.css >
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
@@ -24,7 +24,7 @@
                         <a href="/"><img height="80" width="85" src="<c:url value="/static/logo.png"/>"/></a>
                     </li>
                     <li>
-                        <button type="button" id="add_contact" class="btn btn-default navbar-btn">
+                        <button type="button" id="my_ticket" class="btn btn-default navbar-btn">
                             Мои билеты
                         </button>
                     </li>
@@ -32,7 +32,7 @@
                         <button type="button" id="add_group" class="btn btn-default navbar-btn">Найти мероприятия</button>
                     </li>
                     <li>
-                        <button type="button" id="delete_contact" class="btn btn-default navbar-btn">Создать мероприятие
+                        <button type="button" id="add_contact" class="btn btn-default navbar-btn">Создать мероприятие
                         </button>
                     </li>
                     <%--<li class="dropdown">--%>
@@ -62,7 +62,7 @@
                 <div class="item">
                     <h3> ${conference.name}</h3>
                     <a href="/conf?id=${conference.getId()}">
-                        <img src="${conference.image}" ></a>
+                        <img src="${pageContext.request.contextPath}/static/${conference.image}" ></a>
                     <br/>${conference.getShotDescription()}
                     <br/>Стоимость: ${conference.price} грн
                 </div>
@@ -82,7 +82,7 @@
 <script>
     $('.dropdown-toggle').dropdown();
     $('#add_contact').click(function () {
-        window.location.href = '/contact_add_page';
+        window.location.href = '/add_conf';
     });
     $('#add_group').click(function () {
         window.location.href = '/group_add_page';
