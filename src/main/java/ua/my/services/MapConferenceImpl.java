@@ -24,10 +24,10 @@ groups.add(group);
     }
 
     @Override
-    public void deleteConference(long[] ids) {
-        for (long id : ids) {
+    public void deleteConference(long id) {
+
             conferences.remove(id);
-        }
+
     }
 
     @Override

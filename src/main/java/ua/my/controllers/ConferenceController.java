@@ -1,10 +1,10 @@
 package ua.my.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -13,11 +13,7 @@ import ua.my.logic.Logic;
 import ua.my.model.Conference;
 import ua.my.model.Group;
 import ua.my.services.ConferenceService;
-import ua.my.services.MapConferenceImpl;
 
-import javax.imageio.ImageIO;
-import java.awt.image.BufferedImage;
-import java.io.*;
 
 import static ua.my.controllers.GroupController.DEFAULT_GROUP_ID;
 
@@ -64,12 +60,12 @@ public class ConferenceController {
         return "index";
     }
 
-    @RequestMapping(value = "/conference/delete", method = RequestMethod.POST)
-    public ResponseEntity<Void> delete(@RequestParam(value = "toDelete[]", required = false) long[] toDelete) {
-        if (toDelete != null && toDelete.length > 0)
-            conferenceService.deleteConference(toDelete);
+    @RequestMapping(value = "/conference/delete/{id}")
+    public String delete(@PathVariable(value = "id") long id) {
+            Logic.deletePhoto(conferenceService.findConferenceForId(id).getImage());
+            conferenceService.deleteConference(id);
 
-        return new ResponseEntity<>(HttpStatus.OK);
+        return "redirect:/";
     }
 
     @RequestMapping(value = "/conference/add", method = RequestMethod.POST)
@@ -82,6 +78,7 @@ public class ConferenceController {
             @RequestParam String email,
             @RequestParam MultipartFile photo) {
         Group group = (groupId != DEFAULT_GROUP_ID) ? conferenceService.findGroup(groupId) : null;
+
         String photoName = Logic.savePhoto(photo);
 
         Conference conference = new Conference(group, name, price, date, photoName, email, description);

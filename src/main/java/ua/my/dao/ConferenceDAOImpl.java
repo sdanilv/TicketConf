@@ -25,12 +25,12 @@ public class ConferenceDAOImpl implements ConferenceDAO {
     }
 
     @Override
-    public void delete(long[] ids) {
+    public void delete(long id) {
         Conference c;
-        for (long id : ids) {
+
             c = entityManager.getReference(Conference.class, id);
             entityManager.remove(c);
-        }
+
     }
 
     @Override

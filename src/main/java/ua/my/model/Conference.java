@@ -39,7 +39,6 @@ public class Conference {
         return  description.substring(0, 200) + "...";
         return description;
     }
-    public String getStaticImage(){return image;}
 
     public String getImage() {
         return image;

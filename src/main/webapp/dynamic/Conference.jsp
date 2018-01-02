@@ -16,7 +16,7 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul id="groupList" class="nav navbar-nav">
                 <li>
-                    <a href="/"><img height="50" width="55" src="<c:url value="/static/logo.png"/>"/></a>
+                    <a href="/"><img height="50" width="55" src="<c:url value="../static/logo.png"/>"/></a>
                 </li>
                 <li>
                     <button type="button" id="add_contact" class="btn btn-default navbar-btn">
@@ -41,7 +41,7 @@
                     <%--</ul>--%>
                 <%--</li>--%>
             </ul>
-            <form class="navbar-form navbar-left" role="search" action="/search" method="post">
+            <form class="navbar-form navbar-left" role="search" action="${pageContext.request.contextPath}/search" method="post">
                 <div class="form-group">
                     <input type="text" class="form-control" name="pattern" placeholder="Search">
                 </div>
@@ -53,13 +53,14 @@
 
 <div class="wrapper">
 
-    <img src="${pageContext.request.contextPath}/static/${conference.image}" >
+    <img src="/static/${conference.image}" >
     <div class="panel panel-default">
         <div class="panel-body">
             <h1>Описание:</h1>
         </div>
         <div class="panel-footer">
             <br> ${conference.description}
+            <br><a href="/conference/delete/${conference.id}">Delete</a>
         </div>
     </div>
 

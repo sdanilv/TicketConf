@@ -34,7 +34,7 @@ public class ConferenceServiceImpl implements ConferenceService {
     }
 
     @Transactional
-    public void deleteConference(long[] ids) {
+    public void deleteConference(long ids) {
         conferenceDAO.delete(ids);
     }
 
