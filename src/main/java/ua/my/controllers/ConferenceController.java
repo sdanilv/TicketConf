@@ -5,10 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import ua.my.logic.Logic;
 import ua.my.model.Conference;
@@ -71,18 +68,18 @@ public class ConferenceController {
 
     @RequestMapping(value = "/conference/add", method = RequestMethod.POST, consumes = {MediaType.MULTIPART_FORM_DATA_VALUE})
     public String contactAdd(
-            @RequestParam(value = "group") long groupId,
+//            @RequestParam(value = "group") long groupId,
             @RequestParam String name,
             @RequestParam String description,
             @RequestParam int price,
             @RequestParam String date,
             @RequestParam String email,
             @RequestParam MultipartFile photo) {
-        Group group = (groupId != DEFAULT_GROUP_ID) ? conferenceService.findGroup(groupId) : null;
+//        Group group = (groupId != DEFAULT_GROUP_ID) ? conferenceService.findGroup(groupId) : null;
 
         String photoName = Logic.savePhoto(photo);
 
-        Conference conference = new Conference(group, name, price, date, photoName, email, description);
+        Conference conference = new Conference(null, name, price, date, photoName, email, description);
         conferenceService.addConference(conference);
 
         return "redirect:/";

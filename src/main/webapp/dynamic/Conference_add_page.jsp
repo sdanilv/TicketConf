@@ -5,7 +5,7 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>New Contact</title>
+        <title>New Conference</title>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
     </head>
@@ -19,7 +19,7 @@
                                 <option value="${group.id}">${group.name}</option>
                             </c:forEach>
                         </select>
-                        <input type="text" name="path" value="${pageContext.request.contextPath}" hidden>
+
                         <input class="form-control form-group" type="text" name="name" placeholder="Name" value="a">
                         <input class="form-control form-group" type="text" name="description" placeholder="Description">
                         <input class="form-control form-group" type="text" name="price" placeholder="Price">
