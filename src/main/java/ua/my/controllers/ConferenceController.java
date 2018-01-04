@@ -77,7 +77,7 @@ public class ConferenceController {
             @RequestParam MultipartFile photo) {
         Group group = (groupId != DEFAULT_GROUP_ID) ? conferenceService.findGroup(groupId) : null;
 
- String photoName = Logic.savePhoto(photo);
+        String photoName = Logic.savePhoto(photo);
 
         Conference conference = new Conference(null, name, price, date, photoName, email, description);
         conferenceService.addConference(conference);

@@ -26,7 +26,7 @@ public class Logic {
     public static String savePhoto(MultipartFile photo){
 
         try {
-            if(photo==null)return "logo.jpg";
+//            if(photo==null)return "logo.jpg";
             String photoName = System.currentTimeMillis()+".jpg";
 
             File outputFile = new File(getStaticRootPath() + photoName);
@@ -39,8 +39,9 @@ public class Logic {
             return photoName;
         } catch (IOException e) {
             e.printStackTrace();
-            return "logo.jpg";
+            return "ChekList.jpg";
         }catch (IllegalArgumentException e){
+            e.printStackTrace();
             return "logo.jpg";
         }
 
