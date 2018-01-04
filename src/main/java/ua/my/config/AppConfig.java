@@ -19,7 +19,7 @@ import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.view.JstlView;
 import org.springframework.web.servlet.view.UrlBasedViewResolver;
-import ua.my.logic.Logic;
+
 
 import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
