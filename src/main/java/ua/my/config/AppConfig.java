@@ -71,32 +71,32 @@ public class AppConfig extends WebMvcConfigurerAdapter {
 
 
 
- @Bean
-    public DataSource dataSource() {
-
-        DriverManagerDataSource ds = new DriverManagerDataSource();
-        ds.setDriverClassName("com.mysql.jdbc.Driver");
-        ds.setUrl("jdbc:mysql://localhost:3306/ConferenceTicketSale?verifyServerCertificate=false&useSSL=true&characterEncoding=UTF-8");
-        ds.setUsername("root");
-        ds.setPassword("root");
-        return ds;
-    }
-
-//    @Bean
-//    public DataSource dataSource()throws URISyntaxException {
-//        DriverManagerDataSource ds = new DriverManagerDataSource();
-//        URI dbUri = new URI("mysql://bafb1dae591344:a8398252@us-cdbr-iron-east-05.cleardb.net/" +
-//                "heroku_3a360bf682fe2fe?reconnect=true&characterEncoding=UTF-8");
+// @Bean
+//    public DataSource dataSource() {
 //
-//    String username = dbUri.getUserInfo().split(":")[0];
-//    String password = dbUri.getUserInfo().split(":")[1];
-//    String dbUrl = "jdbc:mysql://" + dbUri.getHost() + dbUri.getPath()+"?characterEncoding=UTF-8";
+//        DriverManagerDataSource ds = new DriverManagerDataSource();
 //        ds.setDriverClassName("com.mysql.jdbc.Driver");
-//        ds.setUrl(dbUrl);
-//    ds.setUsername(username);
-//    ds.setPassword(password);
+//        ds.setUrl("jdbc:mysql://localhost:3306/ConferenceTicketSale?verifyServerCertificate=false&useSSL=true&characterEncoding=UTF-8");
+//        ds.setUsername("root");
+//        ds.setPassword("root");
 //        return ds;
 //    }
+
+    @Bean
+    public DataSource dataSource()throws URISyntaxException {
+        DriverManagerDataSource ds = new DriverManagerDataSource();
+        URI dbUri = new URI("mysql://bafb1dae591344:a8398252@us-cdbr-iron-east-05.cleardb.net/" +
+                "heroku_3a360bf682fe2fe?reconnect=true&characterEncoding=UTF-8");
+
+    String username = dbUri.getUserInfo().split(":")[0];
+    String password = dbUri.getUserInfo().split(":")[1];
+    String dbUrl = "jdbc:mysql://" + dbUri.getHost() + dbUri.getPath()+"?characterEncoding=UTF-8";
+        ds.setDriverClassName("com.mysql.jdbc.Driver");
+        ds.setUrl(dbUrl);
+    ds.setUsername(username);
+    ds.setPassword(password);
+        return ds;
+    }
 
     @Bean
     public UrlBasedViewResolver setupViewResolver() {
