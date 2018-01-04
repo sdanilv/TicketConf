@@ -26,6 +26,7 @@ public class Logic {
     public static String savePhoto(MultipartFile photo){
 
         try {
+            if(photo==null)return "logo.jpg";
             String photoName = System.currentTimeMillis()+".jpg";
 
             File outputFile = new File(getStaticRootPath() + photoName);
