@@ -22,7 +22,7 @@
 
                         <input class="form-control form-group" type="text" name="name" placeholder="Name" value="Name">
                         <input class="form-control form-group" type="text" name="description" placeholder="Description" value="Description">
-                        <input class="form-control form-group" type="text" name="price" placeholder="Price" value="1">
+                        <input class="form-control form-group" type="text" name="price" placeholder="Price" value="2">
                         <input class="form-control form-group" type="text" name="date" placeholder="Date" value="01.01.2000">
                         <input class="form-control form-group" type="text" name="email" placeholder="Email" value="Email">
 

@@ -10,24 +10,26 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 
 public class Logic {
-   private static File getRootPath(){
-        final  String findKey ="SNAPSHOT";
+    private static String getRootPath() {
+        final String findKey = "SNAPSHOT";
         int prefixLength = "file:".length();
         String classPath = Logic.class.getResource("").toString();
-        String rootPath = classPath.substring(prefixLength,classPath.indexOf(findKey)+findKey.length());
-        return new File(rootPath);
+        System.out.println(classPath);
+        String rootPath = classPath.substring(prefixLength, classPath.indexOf(findKey) + findKey.length());
+        System.out.println(rootPath);
+        return rootPath;
     }
 
-    private static String getStaticRootPath(){
-       return getRootPath()+"/static/";
+    private static String getStaticRootPath() {
+        return getRootPath() + "/static/";
     }
 
 
-    public static String savePhoto(MultipartFile photo){
+    public static String savePhoto(MultipartFile photo) {
 
         try {
 //            if(photo==null)return "logo.jpg";
-            String photoName = System.currentTimeMillis()+".jpg";
+            String photoName = System.currentTimeMillis() + ".jpg";
 
             File outputFile = new File(getStaticRootPath() + photoName);
             outputFile.createNewFile();
@@ -40,16 +42,16 @@ public class Logic {
         } catch (IOException e) {
             e.printStackTrace();
             return "ChekList.jpg";
-        }catch (IllegalArgumentException e){
+        } catch (IllegalArgumentException e) {
             e.printStackTrace();
             return "logo.jpg";
         }
 
     }
 
-    public static void deletePhoto(String imageName){
+    public static void deletePhoto(String imageName) {
         if (imageName.equals("logo.jpg")) return;
-        String photoPath = getStaticRootPath()+imageName;
+        String photoPath = getStaticRootPath() + imageName;
         File file = new File(photoPath);
         file.delete();
     }
